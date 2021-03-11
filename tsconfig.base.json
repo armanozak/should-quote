@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@should-quote/should-quote": ["packages/should-quote/src/index.ts"]
+      "should-quote": ["packages/should-quote/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
