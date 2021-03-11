@@ -1,94 +1,55 @@
+# should-quote
 
+This is a tiny library to detect if a string should be wrapped in quotes to work as an object key.
 
-# ShouldQuote
+## How to Install
 
-This project was generated using [Nx](https://nx.dev).
+```sh
+yarn add should-quote
+```
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+or...
 
-🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
+```sh
+npm install should-quote
+```
 
-## Adding capabilities to your workspace
+## How to Use
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+First you need to import the function as seen below:
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+```ts
+import shouldQuote from 'should-quote';
+```
 
-Below are our core plugins:
+Then you can use it on string literals...
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+```ts
+console.log(shouldQuote('foo')); // false
 
-There are also many [community plugins](https://nx.dev/nx-community) you could add.
+console.log(shouldQuote('foo bar')); // true
+```
 
-## Generate an application
+...or variables with string value.
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
+```ts
+const key = 'prop.name';
 
-> You can use any of the plugins above to generate applications as well.
+console.log(shouldQuote(key) ? `obj['${key}']` : `obj.${key}`); // obj['prop.name']
+```
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+The logged output would have been dot notation if camel case were used.
 
-## Generate a library
+```ts
+const key = 'propName';
 
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
+console.log(shouldQuote(key) ? `obj['${key}']` : `obj.${key}`); // obj.propName
+```
 
-> You can also use any of the plugins above to generate libraries as well.
+It allows unquoted keys if it complies with the lexical grammar.
 
-Libraries are shareable across libraries and applications. They can be imported from `@should-quote/mylib`.
+```ts
+const key = '\\u0078'; // yeah, \u0078 does not have to be quoted
 
-## Development server
-
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-
-
-## ☁ Nx Cloud
-
-### Computation Memoization in the Cloud
-
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+console.log(shouldQuote(key) ? `obj['${key}']` : `obj.${key}`); // obj.\u0078
+```
