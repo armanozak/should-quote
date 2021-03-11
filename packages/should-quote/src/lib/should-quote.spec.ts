@@ -64,13 +64,11 @@ describe('should-quote', () => {
     ${'while'}        | ${false}
     ${'with'}         | ${false}
     ${'yield'}        | ${false}
-    ${'yield'}        | ${false}
     ${'propName'}     | ${false}
     ${'PropName'}     | ${false}
     ${'prop_name'}    | ${false}
     ${'PROP_NAME'}    | ${false}
     ${'Prop_Name'}    | ${false}
-    ${'αprop'}        | ${false}
     ${'ɵprop'}        | ${false}
     ${'$prop'}        | ${false}
     ${'*prop'}        | ${true}
