@@ -1,6 +1,8 @@
 {
   "version": 2,
-  "cli": { "defaultCollection": "@nrwl/web" },
+  "cli": {
+    "defaultCollection": "@nrwl/web"
+  },
   "projects": {
     "should-quote": {
       "root": "packages/should-quote",
@@ -9,14 +11,33 @@
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "options": { "lintFilePatterns": ["packages/should-quote/**/*.ts"] }
+          "options": {
+            "lintFilePatterns": ["packages/should-quote/**/*.ts"]
+          }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/packages/should-quote"],
+          "outputs": ["coverage"],
           "options": {
             "jestConfig": "packages/should-quote/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist",
+            "tsConfig": "packages/should-quote/tsconfig.lib.json",
+            "project": "packages/should-quote/package.json",
+            "entryFile": "packages/should-quote/src/index.ts",
+            "assets": [
+              {
+                "glob": "*.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
           }
         }
       }
