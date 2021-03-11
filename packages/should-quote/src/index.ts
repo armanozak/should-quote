@@ -1,1 +1,1 @@
-export * from './lib/should-quote';
+export { default } from './lib/should-quote';
