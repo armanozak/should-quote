@@ -1,0 +1,25 @@
+{
+  "name": "should-quote",
+  "version": "1.0.0",
+  "description": "A utility function to detect if a string should be wrapped in quotes to work as an object key",
+  "keywords": [
+    "javascript",
+    "utility",
+    "function",
+    "object key",
+    "quotes"
+  ],
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/armanozak/should-quote"
+  },
+  "author": "Arman Ozak <arman@armanozak.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.5",
+    "npm": ">=6.0",
+    "yarn": "^1.0"
+  },
+  "dependencies": {}
+}
