@@ -26,15 +26,32 @@
     "help": "nx help"
   },
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "document-register-element": "1.13.1",
+    "tslib": "^2.0.0"
+  },
   "devDependencies": {
-    "@nrwl/tao": "11.3.2",
     "@nrwl/cli": "11.3.2",
+    "@nrwl/cypress": "11.5.1",
+    "@nrwl/eslint-plugin-nx": "11.3.2",
+    "@nrwl/jest": "11.5.1",
+    "@nrwl/linter": "11.3.2",
+    "@nrwl/tao": "11.3.2",
+    "@nrwl/web": "^11.5.1",
     "@nrwl/workspace": "11.3.2",
+    "@types/jest": "26.0.8",
     "@types/node": "12.12.38",
+    "@typescript-eslint/eslint-plugin": "4.3.0",
+    "@typescript-eslint/parser": "4.3.0",
+    "cypress": "^6.0.1",
     "dotenv": "6.2.0",
+    "eslint": "7.10.0",
+    "eslint-config-prettier": "6.0.0",
+    "jest": "26.2.2",
+    "prettier": "2.2.1",
+    "ts-jest": "26.4.0",
     "ts-node": "~9.1.1",
-    "typescript": "~4.0.3",
-    "prettier": "2.2.1"
+    "typescript": "~4.0.3"
   }
 }

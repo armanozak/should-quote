@@ -1,10 +1,25 @@
 {
-  
-  
   "version": 2,
-  
-  "projects": {},
-  "cli": {
-    "defaultCollection": "@nrwl/workspace"
+  "cli": { "defaultCollection": "@nrwl/web" },
+  "projects": {
+    "should-quote": {
+      "root": "packages/should-quote",
+      "sourceRoot": "packages/should-quote/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["packages/should-quote/**/*.ts"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/should-quote"],
+          "options": {
+            "jestConfig": "packages/should-quote/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
   }
 }
